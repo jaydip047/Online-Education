@@ -1,0 +1,1606 @@
+@use "variable" as var;
+@use "mixin" as mix;
+
+
+@font-face {
+    font-family: 'Montserrat-SemiBold';
+    src: url('../fonts/Montserrat-SemiBold.eot');
+    src: url('../fonts/Montserrat-SemiBold.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/Montserrat-SemiBold.woff2') format('woff2'),
+        url('../fonts/Montserrat-SemiBold.woff') format('woff'),
+        url('../fonts/Montserrat-SemiBold.ttf') format('truetype'),
+        url('../fonts/Montserrat-SemiBold.svg#Montserrat-SemiBold') format('svg');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Lato-Black';
+    src: url('../fonts/Lato-Black.eot');
+    src: url('../fonts/Lato-Black.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/Lato-Black.woff2') format('woff2'),
+        url('../fonts/Lato-Black.woff') format('woff'),
+        url('../fonts/Lato-Black.ttf') format('truetype'),
+        url('../fonts/Lato-Black.svg#Lato-Black') format('svg');
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Lato-Light';
+    src: url('../fonts/Lato-Light.eot');
+    src: url('../fonts/Lato-Light.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/Lato-Light.woff2') format('woff2'),
+        url('../fonts/Lato-Light.woff') format('woff'),
+        url('../fonts/Lato-Light.ttf') format('truetype'),
+        url('../fonts/Lato-Light.svg#Lato-Light') format('svg');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Lato-Bold';
+    src: url('../fonts/Lato-Bold.eot');
+    src: url('../fonts/Lato-Bold.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/Lato-Bold.woff2') format('woff2'),
+        url('../fonts/Lato-Bold.woff') format('woff'),
+        url('../fonts/Lato-Bold.ttf') format('truetype'),
+        url('../fonts/Lato-Bold.svg#Lato-Bold') format('svg');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Lato-Hairline';
+    src: url('../fonts/Lato-Hairline.eot');
+    src: url('../fonts/Lato-Hairline.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/Lato-Hairline.woff2') format('woff2'),
+        url('../fonts/Lato-Hairline.woff') format('woff'),
+        url('../fonts/Lato-Hairline.ttf') format('truetype'),
+        url('../fonts/Lato-Hairline.svg#Lato-Hairline') format('svg');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Lato-Regular';
+    src: url('../fonts/Lato-Regular.eot');
+    src: url('../fonts/Lato-Regular.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/Lato-Regular.woff2') format('woff2'),
+        url('../fonts/Lato-Regular.woff') format('woff'),
+        url('../fonts/Lato-Regular.ttf') format('truetype'),
+        url('../fonts/Lato-Regular.svg#Lato-Regular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+body {
+    margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+    margin: 0;
+}
+
+ul,
+ol {
+    padding: 0;
+    margin: 0;
+}
+
+img {
+    max-width: 100%;
+}
+
+a {
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.mm-wrapper--opened {
+    .brandbar-section {
+        .row {
+            .menu-click {
+                i {
+                    &:first-child {
+                        display: none;
+                    }
+
+                    &:last-child {
+                        display: block;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.animatable {
+    /* initially hide animatable objects */
+    visibility: hidden;
+
+    /* initially pause animatable objects their animations */
+    animation-play-state: paused;
+}
+
+/* show objects being animated */
+.animated {
+    visibility: visible;
+
+    animation-fill-mode: both;
+    animation-duration: 1s;
+    animation-play-state: running;
+}
+
+//  <!--------------- TopBar - Section - Start --------------->
+header {
+    background: var.$priem;
+    @include mix.container;
+
+    @include mix.breakpoint(md) {
+        display: none;
+    }
+
+    .row {
+        @include mix.row;
+        padding: 20px 0;
+        position: relative;
+
+        .top-bar {
+            @include mix.flexTabe;
+
+            .topbar-left {
+                p {
+                    @include mix.pera;
+                }
+            }
+
+            .topbar-right {
+                p {
+                    @include mix.pera;
+
+                    a {
+                        @include mix.pera;
+                        transition: 0.3s;
+                        border-bottom: 2px solid var.$priem;
+                        padding-bottom: 5px;
+
+                        &:hover {
+                            border-bottom: 2px solid var.$white;
+
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+// <!--------------- TopBar - Section - End --------------->
+
+
+//  <!--------------- BrandBar - Section - Start --------------->
+
+
+
+
+.brandbar-section {
+    padding: 36px 0;
+    @include mix.container;
+
+    @include mix.breakpoint(md) {
+        padding: 20px 0;
+    }
+
+    .row {
+        @include mix.row;
+
+        .menu-click {
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: none;
+            background: var.$secondary;
+            padding: 15px;
+
+            @include mix.breakpoint(md) {
+                display: block;
+            }
+
+
+            i {
+                color: #fff;
+
+                &:last-child {
+                    display: none;
+                }
+
+                &:first-child {
+                    display: none;
+                }
+
+                @include mix.breakpoint(md) {
+                    &:first-child {
+                        display: block;
+                    }
+                }
+
+            }
+        }
+
+        .brandbar {
+            @include mix.flexTabe;
+
+            .logo {
+                max-width: 100px;
+                width: 100%;
+
+                @include mix.breakpoint(md) {
+                    margin: 0 auto;
+                }
+
+                a {
+                    display: inline-block;
+                }
+            }
+
+            .navbar {
+                nav {
+                    @include mix.breakpoint(md) {
+                        display: none;
+                    }
+
+                    ul {
+                        list-style: none;
+
+                        li {
+                            display: inline-block;
+                            margin-left: 30px;
+
+                            @include mix.breakpoint(lg) {
+                                margin-left: 22px;
+                            }
+
+
+
+                            a {
+                                font-size: 16px;
+                                line-height: 17px;
+                                color: var.$fontblack;
+                                font-family: 'Lato-Bold';
+                                text-transform: uppercase;
+
+                                @include mix.breakpoint(lg) {
+                                    font-size: 14px;
+                                }
+
+                                &:hover {
+                                    color: var.$priem;
+                                }
+                            }
+
+                            &:first-child {
+                                margin-left: 0;
+                            }
+
+                            &:last-child {
+                                a {
+                                    @include mix.button;
+
+                                    @include mix.breakpoint(lg) {
+                                        padding: 12px 12px;
+                                        border-radius: 10px;
+                                        font-size: 14px;
+                                        line-height: 15px;
+                                    }
+
+                                    &:hover {
+                                        background: var.$secondary;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+// <!--------------- BrandBar - Section - End --------------->
+
+
+
+// <!--------------- Banner - Section - Start --------------->
+.banner {
+    @include mix.container;
+    background: url(../images/banner.jpg) no-repeat center top;
+    background-size: cover;
+    overflow: hidden;
+    padding-bottom: 17px;
+    position: relative;
+
+    @include mix.breakpoint(md) {
+        padding-right: 0;
+        padding-left: 0;
+    }
+
+    &::after {
+        content: "";
+        background: rgba(0, 0, 0, 0.6);
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 0;
+    }
+
+    .row {
+        position: relative;
+        @include mix.row;
+        height: 100%;
+        position: relative;
+        z-index: 1;
+
+
+        .banner-content {
+            text-align: center;
+
+            @include mix.breakpoint(md) {
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+
+            h1 {
+                font-size: 110px;
+                line-height: 112px;
+                color: var.$white;
+                font-family: 'Lato-Bold';
+                padding-top: 190px;
+
+                @include mix.breakpoint(xxl) {
+                    font-size: 96px;
+                    line-height: 99px;
+                }
+
+                @include mix.breakpoint(lg) {
+                    font-size: 75px;
+                    line-height: 77px;
+                }
+
+                @include mix.breakpoint(md) {
+                    font-size: 60px;
+                    line-height: 62px;
+                }
+
+                @include mix.breakpoint(xs) {
+                    font-size: 48px;
+                    line-height: 51px;
+                }
+
+                span {
+                    display: block;
+                }
+            }
+
+            a {
+                @include mix.button(20px, 21px);
+                margin-top: 90px;
+
+                @include mix.breakpoint(md) {
+                    margin-top: 30px;
+                }
+
+                &:hover {
+                    background: var.$secondary;
+                }
+            }
+        }
+
+
+        .banner-sec {
+            background: var.$white;
+            border-radius: 22px;
+            width: 100%;
+            position: relative;
+
+            @include mix.breakpoint(md) {
+                border-radius: 0;
+            }
+
+            &::after {
+                content: "";
+                background: var.$priem;
+                position: absolute;
+                bottom: -11px;
+                left: 50%;
+                transform: translate(-50%, 0);
+                height: 11px;
+                width: 440px;
+                z-index: 1;
+                border-radius: 0 0 8px 8px;
+
+                @include mix.breakpoint(xs) {
+                    width: 290px;
+                }
+
+                @include mix.breakpoint(sm) {
+                    width: 190px;
+                    height: 12px;
+                    bottom: -12px;
+                }
+            }
+
+            &::before {
+                content: "";
+                background: var.$secondary;
+                position: absolute;
+                bottom: -11px;
+                left: 50%;
+                transform: translate(-50%, 0);
+                height: 11px;
+                width: 0;
+                z-index: 2;
+                border-radius: 0 0 8px 8px;
+                transition: 0.3s;
+            }
+
+            &:hover {
+                &::before {
+                    width: 440px;
+
+                    @include mix.breakpoint(xs) {
+                        width: 290px;
+                    }
+
+                    @include mix.breakpoint(sm) {
+                        width: 190px;
+                        height: 12px;
+                        bottom: -12px;
+                    }
+                }
+            }
+
+            .banner-max {
+                position: relative;
+
+                &:after {
+                    content: "";
+                    background: #fff;
+                    position: absolute;
+                    left: -1000%;
+                    right: -1000%;
+                    bottom: -17px;
+                    height: 30%;
+                }
+
+                .banner-con {
+                    display: flex;
+                    justify-content: flex-start;
+                    align-items: center;
+                    padding: 80px 70px;
+                    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+                    border-radius: 22px;
+                    position: relative;
+                    margin-top: 185px;
+                    z-index: 1;
+
+                    @include mix.breakpoint(lg) {
+                        padding: 30px;
+                        justify-content: space-between;
+
+                    }
+
+                    @include mix.breakpoint(md) {
+                        flex-direction: column;
+                        text-align: center;
+                        margin-top: 140px;
+                        border-radius: 0;
+                    }
+
+                    .bannersec-content {
+                        max-width: 480px;
+                        width: 100%;
+                        position: relative;
+                        margin-right: 95px;
+                        z-index: 1;
+
+                        @include mix.breakpoint(lg) {
+                            max-width: 400px;
+                            margin-right: 0;
+
+                        }
+
+                        @include mix.breakpoint(md) {
+                            max-width: none;
+                            margin-right: 0;
+                            text-align: center;
+                        }
+
+                        &::after {
+                            content: "";
+                            width: 2px;
+                            background: var.$darkline;
+                            display: inline-block;
+                            position: absolute;
+                            top: 0;
+                            bottom: 0;
+                            right: -95px;
+
+                            @include mix.breakpoint(xl) {
+                                right: -55px;
+                            }
+
+                            @include mix.breakpoint(lg) {
+                                right: -26px;
+                            }
+
+                            @include mix.breakpoint(lg) {
+                                display: none;
+                            }
+                        }
+
+                        h2 {
+                            @include mix.h2;
+                            font-family: 'Lato-Regular';
+                            color: var.$secondary;
+
+                            @include mix.breakpoint(lg) {
+                                font-size: 27px;
+                                line-height: 30px;
+                            }
+                        }
+
+                        p {
+                            @include mix.p;
+                            color: var.$darkcolor;
+                            text-align: justify;
+                        }
+                    }
+
+                    .banner-icons {
+                        padding-left: 95px;
+
+                        @include mix.breakpoint(xxl) {
+                            padding-left: 55px;
+                        }
+
+                        @include mix.breakpoint(xl) {
+                            padding-left: 12px;
+                        }
+
+
+                        @include mix.breakpoint(lg) {
+                            padding-left: 11px;
+                        }
+
+                        @include mix.breakpoint(md) {
+                            padding-left: 0;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            flex-wrap: wrap;
+                        }
+
+                        .icon-flex {
+                            margin-top: 36px;
+                            z-index: 1;
+                            position: relative;
+
+                            @include mix.breakpoint(md) {
+                                margin-top: 0;
+                                margin: 15px 10px;
+                            }
+
+                            .flex-icon {
+                                display: inline-block;
+                                vertical-align: middle;
+                            }
+
+                            .icon-content {
+                                display: inline-block;
+                                vertical-align: middle;
+                                padding-left: 20px;
+
+                                h4 {
+                                    @include mix.h4;
+                                    font-family: 'Lato-Regular';
+
+                                    @include mix.breakpoint(xs) {
+                                        font-size: 20px;
+                                        line-height: 24px;
+                                    }
+                                }
+
+                                h5 {
+                                    @include mix.h5;
+                                }
+                            }
+
+                            &:first-child {
+                                margin-top: 0;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+// <!--------------- Banner - Section - End --------------->
+
+
+
+// <!--------------- First - Section - Start --------------->
+.first-section {
+    padding-top: 120px;
+    padding-bottom: 120px;
+    @include mix.container;
+
+    @include mix.breakpoint(xxl) {
+        padding-top: 60px;
+        padding-bottom: 60px;
+    }
+
+    @include mix.breakpoint(xs) {
+        padding-top: 40px;
+        padding-bottom: 40px;
+    }
+
+    .row {
+        @include mix.row;
+
+        .title {
+            text-align: center;
+
+            h2 {
+                @include mix.h2;
+                text-transform: uppercase;
+                font-family: "Lato-Black";
+                color: var.$secondary;
+                padding-bottom: 20px;
+                position: relative;
+
+                @include mix.breakpoint(xs) {
+                    font-size: 26px;
+                    line-height: 28px;
+                }
+
+                &:after {
+                    @include mix.titleAfter;
+                }
+
+                &::before {
+                    @include mix.titleBefore;
+                }
+            }
+        }
+
+        .first-consept {
+            padding-top: 90px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            text-align: center;
+            column-gap: 20px;
+
+            @include mix.breakpoint(xxl) {
+                padding-top: 40px;
+            }
+
+            @include mix.breakpoint(md) {
+                flex-direction: column;
+                align-items: center;
+                // padding-top: 30px;
+            }
+
+            @include mix.breakpoint(xs) {
+                padding-top: 30px;
+            }
+
+            .first-boxes {
+                width: 25%;
+                position: relative;
+
+                @include mix.breakpoint(md) {
+                    width: 100%;
+                    margin-top: 30px;
+                }
+
+
+                .first-image {
+                    line-height: 1px;
+
+                    img {
+                        border-radius: 50%;
+                    }
+                }
+
+                .first-content {
+                    text-align: center;
+                    padding: 25px 0;
+                    background: var.$white;
+                    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+                    position: relative;
+                    z-index: 2;
+                    margin-top: -15px;
+
+                    h3 {
+                        @include mix.h3;
+                        text-transform: uppercase;
+                    }
+
+                    h5 {
+                        @include mix.h5;
+                        color: var.$darktext;
+                        padding-top: 10px;
+                    }
+                }
+
+                &::after {
+                    content: "";
+                    background: #ff1949;
+                    position: absolute;
+                    bottom: -11px;
+                    left: 50%;
+                    transform: translate(-50%, 0);
+                    height: 30px;
+                    width: 146px;
+                    z-index: -1;
+                }
+
+                &::before {
+                    content: "";
+                    background: var.$secondary;
+                    position: absolute;
+                    bottom: -11px;
+                    left: 50%;
+                    transform: translate(-50%, 0);
+                    height: 30px;
+                    width: 0;
+                    z-index: 0;
+                    transition: 0.3s;
+                }
+
+                &:hover {
+                    &:before {
+                        width: 146px;
+                    }
+                }
+            }
+
+        }
+    }
+}
+
+// <!--------------- First - Section - End --------------->
+
+
+// <!--------------- Second - Section - Start --------------->
+.second-section {
+    overflow: hidden;
+    float: left;
+    width: 100%;
+
+    .second-consept {
+        @include mix.table;
+
+        @include mix.breakpoint(md) {
+            display: flex;
+            flex-direction: column;
+        }
+
+
+        .second-left {
+            @include mix.cell;
+            background: var.$fontblack;
+
+            @include mix.breakpoint(md) {
+                display: block;
+                order: 2;
+                padding-top: 20px;
+                padding-bottom: 20px;
+            }
+
+            .left-max {
+                max-width: 465px;
+                width: 100%;
+                float: right;
+                margin-right: 106px;
+                position: relative;
+                z-index: 1;
+
+                @include mix.breakpoint(xxl) {
+                    margin-right: 24px;
+                }
+
+                @include mix.breakpoint(xl) {
+                    margin-right: 0;
+                }
+
+                @include mix.breakpoint(lg) {
+                    margin-right: 0;
+                    max-width: none;
+                    width: 100%;
+                    padding: 20px;
+                }
+
+                @include mix.breakpoint(md) {
+                    float: none;
+                    max-width: none;
+                    width: 100%;
+                    margin-right: 0;
+                    text-align: center;
+                }
+
+                h2 {
+                    @include mix.h2;
+                    font-family: "Lato-Black";
+                    text-transform: uppercase;
+                    color: var.$white;
+                    position: relative;
+                    padding-bottom: 20px;
+
+                    &::after {
+                        content: "";
+                        background: #fff;
+                        height: 2px;
+                        width: 70px;
+                        position: absolute;
+                        bottom: 0;
+                        left: 0;
+
+                        @include mix.breakpoint(md) {
+                            left: 50%;
+                            transform: translate(-50%, 0);
+                        }
+                    }
+
+                    &::before {
+                        content: "";
+                        background: #fff;
+                        height: 2px;
+                        width: 35px;
+                        position: absolute;
+                        bottom: -10px;
+                        left: 0;
+
+                        @include mix.breakpoint(md) {
+                            left: 50%;
+                            transform: translate(-50%, 0);
+                        }
+                    }
+
+                    @include mix.breakpoint(lg) {
+                        font-size: 29px;
+                        line-height: 33px;
+                    }
+
+                    @include mix.breakpoint(xs) {
+                        font-size: 25px;
+                        line-height: 28px;
+                    }
+                }
+
+                p {
+                    @include mix.p;
+                    color: var.$lesscolor;
+                }
+
+                a {
+                    @include mix.button;
+                    margin-top: 40px;
+                    border: 2px solid var.$priem;
+
+                    &:hover {
+                        background: var.$secondary;
+                    }
+                }
+            }
+        }
+
+        .second-right {
+            @include mix.cell;
+            position: relative;
+            background: url(../images/video-image.jpg) no-repeat center top;
+            background-size: cover;
+            height: 590px;
+            position: relative;
+
+
+            @include mix.breakpoint(md) {
+                display: block;
+                height: 433px;
+
+            }
+
+            &::after {
+                content: "";
+                background: var.$fontblack;
+                position: absolute;
+                top: -68px;
+                left: -128px;
+                width: 296px;
+                bottom: 0;
+                transform: skew(-30deg, 24deg);
+
+                @include mix.breakpoint(xxl) {
+                    transform: skew(-15deg, 3deg);
+                    width: 216px;
+                }
+
+                @include mix.breakpoint(xl) {
+                    display: none;
+                }
+            }
+        }
+
+        .video-btn {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+
+            a {
+                display: inline-block;
+            }
+        }
+    }
+}
+
+// <!--------------- Second - Section - End --------------->
+
+
+// <!--------------- Third - Section - Start --------------->
+.third-section {
+    padding-top: 120px;
+    padding-bottom: 120px;
+    @include mix.container;
+
+    @include mix.breakpoint(xxl) {
+        padding-top: 60px;
+        padding-bottom: 60px;
+    }
+
+    @include mix.breakpoint(xs) {
+        padding-top: 40px;
+        padding-bottom: 40px;
+    }
+
+
+    .row {
+        @include mix.row;
+
+        .title {
+            text-align: center;
+
+            h2 {
+                @include mix.h2;
+                text-transform: uppercase;
+                font-family: "Lato-Black";
+                color: var.$secondary;
+                padding-bottom: 20px;
+                position: relative;
+
+                @include mix.breakpoint(sm) {
+                    font-size: 26px;
+                    line-height: 28px;
+                }
+
+                &:after {
+                    @include mix.titleAfter;
+                }
+
+                &::before {
+                    @include mix.titleBefore;
+                }
+            }
+        }
+
+        .third-concept {
+            @include mix.flexTabe;
+            column-gap: 40px;
+            padding-top: 86px;
+
+            @include mix.breakpoint(xxl) {
+                padding-top: 60px;
+            }
+
+
+            &:last-child {
+                padding-top: 45px;
+            }
+
+            @include mix.breakpoint(md) {
+                flex-direction: column;
+                padding-top: 40px;
+
+                &:last-child {
+                    padding-top: 0;
+                }
+            }
+
+            @include mix.breakpoint(xs) {
+                padding-top: 30px;
+            }
+
+
+
+            .third-boxes {
+                width: 50%;
+                position: relative;
+
+                @include mix.breakpoint(md) {
+                    width: 100%;
+                    margin-top: 30px;
+                }
+
+                &::after {
+                    content: "";
+                    background: var.$priem;
+                    height: 128px;
+                    width: 10px;
+                    position: absolute;
+                    bottom: 0;
+                    right: -10px;
+                    z-index: -1;
+
+                    @include mix.breakpoint(md) {
+                        height: 8px;
+                        width: 444px;
+                        bottom: -8px;
+                        left: 0;
+                        width: 100%;
+                    }
+                }
+
+                &::before {
+                    content: "";
+                    background: var.$secondary;
+                    height: 0;
+                    width: 10px;
+                    position: absolute;
+                    position: absolute;
+                    bottom: 0;
+                    right: -10px;
+                    transition: 0.3s;
+
+
+                    @include mix.breakpoint(md) {
+                        height: 8px;
+                        width: 444px;
+                        bottom: -8px;
+                        left: 0;
+                        width: 0;
+                    }
+                }
+
+                &:hover {
+                    &::before {
+                        height: 128px;
+
+                        @include mix.breakpoint(md) {
+                            width: 100%;
+                        }
+                    }
+                }
+
+                .third-box {
+                    line-height: 1px;
+
+                    img {
+                        @include mix.breakpoint(lg) {
+                            width: 100%;
+                        }
+                    }
+                }
+
+                .third-main {
+                    margin-top: -210px;
+
+                    @include mix.breakpoint(lg) {
+                        margin-top: 0;
+                    }
+
+                    .third-content {
+                        max-width: 332px;
+                        width: 100%;
+                        padding: 40px 26px;
+                        margin: 0 0 0 auto;
+                        background: var.$white;
+                        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+                        position: relative;
+                        z-index: 1;
+
+                        @include mix.breakpoint(md) {
+                            text-align: center;
+                        }
+
+                        @include mix.breakpoint(lg) {
+                            max-width: none;
+                        }
+
+                        @include mix.breakpoint(xs) {
+                            padding: 20px;
+                        }
+
+                        h3 {
+                            @include mix.h3(18px, 20px);
+                            text-transform: uppercase;
+                        }
+
+                        h5 {
+                            @include mix.h5;
+                            padding-top: 10px;
+                            color: var.$lesscolor;
+                        }
+
+                        p {
+                            @include mix.p;
+                            color: var.$darkcolor;
+                            padding-top: 15px;
+                        }
+
+                        a {
+                            @include mix.button(14px, 15px);
+                            margin-top: 25px;
+
+                            &:hover {
+                                background: var.$secondary;
+                            }
+                        }
+
+                    }
+                }
+
+
+                .offer {
+                    background: var.$secondary;
+                    padding: 28px;
+                    border-radius: 50px 50px 0 0;
+                    max-width: 111px;
+                    width: 100%;
+                    margin: 0 12px 0 auto;
+                    text-align: center;
+
+                    @include mix.breakpoint(xl) {
+                        padding: 20px;
+                        max-width: 93px;
+                    }
+
+                    @include mix.breakpoint(lg) {
+                        padding: 20px;
+                        max-width: none;
+                        width: 100%;
+                        border-radius: 0;
+                    }
+
+                    h5 {
+                        @include mix.h5(32px, 34px);
+                        color: var.$white;
+
+                        @include mix.breakpoint(xl) {
+                            font-size: 28px;
+                            line-height: 29px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+// <!--------------- Third - Section - End --------------->
+
+
+
+// <!--------------- Four - Section - Start --------------->
+.four-section {
+    background: url(../images/counter-bg.jpg) no-repeat center top;
+    background-size: cover;
+    height: 476px;
+    @include mix.container;
+    position: relative;
+
+    &::after {
+        content: "";
+        background: rgba($color: #000000, $alpha: 0.4);
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 0;
+    }
+
+    .row {
+        @include mix.row;
+        height: 100%;
+
+        ul {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            text-align: center;
+            height: 100%;
+            list-style: none;
+            position: relative;
+            z-index: 1;
+
+            @include mix.breakpoint(md) {
+                flex-direction: column;
+                padding: 40px 0;
+            }
+
+            li {
+                span {
+                    @include mix.titlecon(50px, 52px, var.$white);
+                }
+
+                h5 {
+                    @include mix.h5;
+                    color: var.$white;
+                    padding-top: 10px;
+                }
+            }
+        }
+
+    }
+}
+
+// <!--------------- Four - Section - End --------------->
+
+
+// <!--------------- Five - Section - Start --------------->
+.five-section {
+    @include mix.container;
+    padding-top: 116px;
+    padding-bottom: 116px;
+
+    @include mix.breakpoint(xxl) {
+        padding-top: 60px;
+        padding-bottom: 60px;
+    }
+
+    @include mix.breakpoint(xs) {
+        padding-top: 40px;
+        padding-bottom: 40px;
+    }
+
+
+    .row {
+        // @include mix.row;
+        max-width: 940px;
+        margin: 0 auto;
+
+        .title {
+            text-align: center;
+
+            h2 {
+                @include mix.h2;
+                text-transform: uppercase;
+                font-family: "Lato-Black";
+                color: var.$secondary;
+                padding-bottom: 20px;
+                position: relative;
+
+                @include mix.breakpoint(sm) {
+                    font-size: 26px;
+                    line-height: 28px;
+                }
+
+                &:after {
+                    @include mix.titleAfter;
+                }
+
+                &::before {
+                    @include mix.titleBefore;
+                }
+            }
+        }
+
+        .five-consept {
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            padding-top: 85px;
+
+            @include mix.breakpoint(sm) {
+                padding-top: 40px;
+            }
+
+            .owl-carousel {
+                .owl-dots {
+                    text-align: center;
+
+                    button {
+
+                        span {
+                            height: 15px;
+                            width: 15px;
+                            display: inline-block;
+                            border-radius: 50%;
+                            margin-right: 10px;
+                            border: 2px solid var.$priem;
+                        }
+
+                        &.active {
+                            span {
+                                background: var.$priem;
+                            }
+                        }
+
+                    }
+                }
+
+                .five-boxes {
+
+                    .five-image {
+                        line-height: 1px;
+
+                        img {
+                            width: 100%;
+                        }
+                    }
+
+                    .five-content {
+                        padding: 35px 0;
+
+                        @include mix.breakpoint(md) {
+                            text-align: center;
+                        }
+
+                        h3 {
+                            @include mix.h3(30px, 32px);
+                        }
+
+                        h5 {
+                            @include mix.h5(14px, 16px, capitalize);
+                            color: var.$fontdark;
+                            padding-top: 10px;
+                        }
+
+                        p {
+                            @include mix.p(22px);
+                            color: var.$secondary;
+                        }
+
+                        a {
+                            @include mix.button(14px, 15px);
+                            margin-top: 22px;
+
+                            &:hover {
+                                background: var.$secondary;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+// <!--------------- Five - Section - End --------------->
+
+
+// <!--------------- Footer - Section - Start --------------->
+footer {
+    @include mix.container;
+    padding-top: 75px;
+    padding-bottom: 75px;
+    background: var.$secondary;
+
+    @include mix.breakpoint(xl) {
+        padding-top: 60px;
+        padding-bottom: 60px;
+    }
+
+    @include mix.breakpoint(xs) {
+        padding-top: 40px;
+        padding-bottom: 40px;
+    }
+
+
+    .row {
+        @include mix.row;
+
+        .footer-section {
+            display: flex;
+            justify-content: space-between;
+
+            @include mix.breakpoint(md) {
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                text-align: center;
+            }
+
+            @include mix.breakpoint(lg) {
+                gap: 15px;
+            }
+
+            .footer-box {
+
+                &:first-child {
+                    max-width: 365px;
+                    width: 100%;
+                }
+
+                .footer-logo {
+                    max-width: 100px;
+                    width: 100%;
+
+                    @include mix.breakpoint(md) {
+                        margin: 0 auto;
+                    }
+
+                    a {
+                        display: inline-block;
+                    }
+                }
+
+                p {
+                    @include mix.p(22px);
+                    color: var.$white;
+                }
+
+                h3 {
+                    @include mix.h3(20px, 24px);
+                    color: var.$white;
+                    text-transform: uppercase;
+                    padding-bottom: 22px;
+                    position: relative;
+
+                    &::after {
+                        content: "";
+                        background: var.$white;
+                        height: 2px;
+                        width: 33px;
+                        position: absolute;
+                        bottom: 0;
+                        left: 0;
+
+                        @include mix.breakpoint(md) {
+                            left: 50%;
+                            transform: translate(-50%, 0);
+                        }
+                    }
+
+                }
+
+                ul {
+                    list-style: none;
+                    padding-top: 22px;
+
+                    li {
+                        padding-top: 15px;
+
+                        &:first-child {
+                            padding-top: 0;
+                        }
+
+                        a {
+                            display: inline-block;
+                            color: var.$white;
+                            font-size: 17px;
+                            line-height: 18px;
+                            font-family: 'Lato-Regular';
+                            transition: 0.3s;
+                            text-transform: capitalize;
+
+                            &:hover {
+                                color: var.$priem;
+                            }
+                        }
+                    }
+                }
+
+                .topbar-left {
+                    p {
+                        @include mix.pera;
+
+                        @include mix.breakpoint(lg) {
+                            font-size: 15px;
+                            line-height: 17px;
+                        }
+                    }
+                }
+
+                .topbar-right {
+                    h5 {
+                        @include mix.pera;
+
+                        @include mix.breakpoint(lg) {
+                            font-size: 15px;
+                            line-height: 17px;
+                        }
+
+                        a {
+                            @include mix.pera;
+                            padding-top: 10px;
+                            border-bottom: 2px solid var.$secondary;
+                            padding-bottom: 10px;
+
+                            &:hover {
+                                border-bottom: 2px solid var.$white;
+                            }
+
+                            @include mix.breakpoint(lg) {
+                                font-size: 15px;
+                                line-height: 17px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+// <!--------------- Footer - Section - End --------------->
+
+
+// <!--------------- CopyRight - Section - Start --------------->
+.copyright {
+    @include mix.container;
+    background: var.$priem;
+    padding: 20px 0;
+
+    .row {
+        @include mix.row;
+        text-align: center;
+
+        p {
+            @include mix.pera;
+        }
+    }
+
+}
+
+// <!--------------- CopyRight - Section - End --------------->
+
+
+.mm-menu--theme-light {
+    --mm-color-background: rgb(3 13 40 / 0.4);
+    --mm-color-border: rgb(255 255 255 / 0.7);
+    --mm-color-icon: rgb(255 255 255 / 0.8);
+    --mm-color-text: rgb(255 255 255 / 0.8);
+    --mm-color-text-dimmed: rgb(3 13 40 / 0.4);
+    text-transform: capitalize;
+}
+
+.mm-menu a,
+.mm-menu a:active,
+.mm-menu a:hover,
+.mm-menu a:link,
+.mm-menu a:hover {
+    color: #ff1949;
+    font-size: 16px;
+    line-height: 17px;
+    font-family: 'Lato-Regular';
+}
+
+.mm-navbar__title>span {
+    color: #ff1949;
+    font-size: 17px;
+    line-height: 18px;
+    font-family: 'Lato-Regular';
+}

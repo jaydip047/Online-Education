@@ -1,0 +1,163 @@
+@use "variable" as var;
+
+
+@mixin container {
+    padding-left: 20px;
+    padding-right: 20px;
+    float: left;
+    width: 100%;
+}
+
+@mixin row {
+    max-width: 1176px;
+    margin: 0 auto;
+}
+
+@mixin table {
+    display: table;
+    table-layout: fixed;
+    height: 100%;
+    width: 100%;
+}
+
+@mixin cell {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+@mixin pera {
+    font-size: 18px;
+    line-height: 20px;
+    font-family: 'Lato-Regular';
+    color: #fff;
+    display: inline-block;
+}
+
+@mixin button($fontsize: 16px, $lineheight: 17px) {
+    padding: 18px 28px;
+    color: #fff;
+    background: var.$priem;
+    border-radius: 22px;
+    font-family: 'Montserrat-SemiBold';
+    display: inline-block;
+    font-size: $fontsize;
+    line-height: $lineheight;
+    text-transform: uppercase;
+    transition: 0.3s;
+}
+
+@mixin titlecon ($fontsize: 36px, $lineheight: 38px, $textColor: #030d28) {
+    font-size: $fontsize;
+    line-height: $lineheight;
+    font-family: "Lato-Black";
+    color: $textColor;
+}
+
+@mixin flexTabe {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+@mixin h2 {
+    font-size: 36px;
+    line-height: 38px;
+}
+
+@mixin h3 ($fontsize: 20px, $lineheight: 22px) {
+    font-size: $fontsize;
+    line-height: $lineheight;
+    font-family: "Lato-Black";
+    color: #030d28;
+}
+
+@mixin h4 {
+    font-size: 25px;
+    line-height: 29px;
+    color: var.$fontblack;
+    text-transform: capitalize;
+}
+
+@mixin h5 ($fontsize: 14px, $lineheight: 16px, $textTransform: uppercase) {
+    font-size: $fontsize;
+    line-height: $lineheight;
+    font-family: 'Lato-Bold';
+    text-transform: $textTransform;
+}
+
+@mixin p($paddingTop: 30px) {
+    font-size: 17px;
+    line-height: 25px;
+    font-family: 'Lato-Regular';
+    padding-top: $paddingTop;
+}
+
+@mixin titleAfter {
+    content: "";
+    background: var.$secondary;
+    height: 2px;
+    width: 66px;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, 0);
+}
+
+@mixin titleBefore {
+    content: "";
+    background: var.$secondary;
+    height: 2px;
+    width: 33px;
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translate(-50%, 0);
+}
+
+
+/* Breakpoint sizes */
+$screen-sm-max: 479px;
+$screen-xs-max: 639px;
+$screen-md-max: 767px;
+$screen-lg-max: 979px;
+$screen-xl-max: 1024px;
+$screen-xxl-max: 1156px;
+
+/* Create the mixin (usually in a separate .scss file) */
+@mixin breakpoint($media) {
+    @if $media ==sm {
+        @media only screen and (max-width: $screen-sm-max) {
+            @content;
+        }
+    }
+
+    @if $media ==xs {
+        @media only screen and (max-width: $screen-xs-max) {
+            @content;
+        }
+    }
+
+    @else if $media ==md {
+        @media only screen and (max-width: $screen-md-max) {
+            @content;
+        }
+    }
+
+    @else if $media ==lg {
+        @media only screen and (max-width: $screen-lg-max) {
+            @content;
+        }
+    }
+
+    @else if $media ==xl {
+        @media only screen and (max-width: $screen-xl-max) {
+            @content;
+        }
+    }
+
+    @else if $media ==xxl {
+        @media only screen and (max-width: $screen-xxl-max) {
+            @content;
+        }
+    }
+}
